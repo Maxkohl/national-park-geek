@@ -1,0 +1,611 @@
+:root {
+    --background-color: #00301B;
+    --font-color: #00130a;
+    --header-font-size: 8vw;
+    --nav-font-size: 3vw;
+    --subheading-font-size: 1.8vw;
+    --body-text-font-size: 1.2vw;
+
+    --header-height: 11vw;
+    --sub-heading-height:3.4vw;
+    --form-input-height: 2vw;
+    --form-input-font-size: 1vw;
+
+    --padding-size: 1vw;
+    --margin-size: 1vw;
+
+    --nav-margin-size: 2.5vw;
+
+    --bottom-align-text-padding: 0.15vw;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+	padding: 0;
+	color: var(--font-color);
+	box-sizing: border-box;
+}
+
+html {
+    background: white;   
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 1fr;
+    grid-template-areas: 
+        "main" 
+        "description"
+        ;
+
+    gap: var(--margin-size);
+	font-family: 'Rubik', sans-serif;
+}
+
+.grid-item {
+	color: #fff;
+	padding: var(--margin-size) 2*var(--margin-size);
+}
+
+.main {
+	color: lighten(gray, 25%);
+	grid-area: main;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+main.grid-item.main {
+    height: 22vw;
+}
+
+.items {
+	padding-top: 3vw;
+	padding-bottom: 3vw;
+	display: flex;
+	-webkit-box-align: center;
+	position: relative;
+	width: 100%;
+	height: 75%;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	transition: all 0.2s;
+	transform: scale(0.98);
+	will-change: transform;
+	user-select: none;
+	cursor: pointer;
+}
+
+.items.active {
+	background: rgba(255, 255, 255, 0.3);
+	cursor: grabbing;
+	cursor: -webkit-grabbing;
+	transform: scale(1);
+}
+
+.tile {
+	display: inline-block;
+	align-items: baseline;
+	background: black;
+	min-height: 250px;
+	min-width: 400px;
+	max-width: 500px;
+	margin-right: 5px;
+}
+
+img {
+	max-height: 100%;
+}
+
+.polaroid a {
+	background: #ffffff;
+	display: inline;
+	float: left; /* don't remove! for some reason this fucks up the polaroid frame */
+	margin: 10px 10px 10px;
+	padding: 15px 15px 30px;
+	text-align: center;
+	text-decoration: none;
+	-webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
+	box-shadow: 2px 4px 6px rgba(0, 0, 0, .3);
+	-webkit-transition: all .20s linear;
+	-moz-transition: all .20s linear;
+	transition: all .20s linear;
+	z-index: 0;
+	position: relative;
+}
+
+.polaroid a:after {
+	color: #333;
+	font-size: 25px;
+	content: attr(title);
+	position: relative;
+	top: 15px;
+}
+
+.polaroid img {
+    display: inline-block;
+    width: 250px;
+    padding: 0;
+}
+
+.polaroid a:hover {
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	transform: scale(1.2);
+	z-index: 10;
+	-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+	-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, .7);
+}
+
+.polaroid a:hover .overlay {
+	opacity: .6;
+}
+
+body>div.grid-container>main>div>a>p {
+	text-overflow: break-word;
+	word-wrap: break-word;
+}
+
+.text {
+	color: white;
+	font-size: 20px;
+	position: absolute;
+	top: 90%;
+    left: 33%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+}
+
+#description {
+	text-align: center;
+	background-color: white;
+	border: var(--margin-size) var(--background-color);
+	padding: 5px;
+	grid-area: details;
+}
+
+#description a:hover {
+	text-decoration: underline;
+}
+
+.lowerContent {
+	grid-area: description;
+	display: grid;
+	grid-template-columns: 3fr 2fr;
+	grid-template-areas: "details other";
+	justify-content: space-between;
+	padding-left: 2vw;
+	padding-right: 2vw;
+}
+
+#advertisements {
+	border: 1vw var(--background-color);
+	background-color: white;
+}
+
+#advertisements > div {
+	text-align: center;
+}
+
+#advertisements img {
+	margin-top: 5px;
+}
+
+/* Park Details Page */
+
+section > div {
+	margin: 10px;
+}
+
+.park-grid-container {
+	grid-area: content;
+	display: grid;
+	grid-template-columns: 2fr 2fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	place-content: center center;
+	grid-template-areas: 
+		"image parkInfo weather"
+		"dropdown dropdown moreWeather";
+}
+
+
+#parkDetailsImage {
+	grid-area: image;
+	padding-top: 3vw;
+}
+
+#parkDetailsImage img {
+	width: 100%;
+}
+
+.parkTileHeader {
+	font-size: var(--subheading-font-size);
+	border: 5px var(--background-color);
+	background-color: white;
+	text-align: center;
+	margin-bottom: 0.5vw;
+}
+
+.quote{
+	font-style: italic;
+	border: 1vw var(--background-color);
+	background-color: white;
+	padding: 5px;
+	margin-bottom: 0.5vw;
+}
+
+#parkInfoTile {
+	grid-area: parkInfo;
+	padding: 5px;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+#parkInfoTile p {
+	padding: 5px;
+	margin-top: 3vw;
+}
+
+.forecast {
+	grid-area: moreWeather;
+	justify-self: center;
+	margin-top: 5px;
+	height: 50%;
+}
+
+.forecast p {
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.forecast img {
+	width: 20%;
+}
+
+.forecastList {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 300px;
+	box-shadow: 0px 20px 35px -26px #080c21;
+	scroll-behavior: smooth;
+}
+
+.forecastList::-webkit-scrollbar {
+  display: none;
+}
+
+#todaysForecast {
+	grid-area: weather;
+	justify-self: center;
+	height: auto;
+	display: block;
+	border-color: var(--background-color);
+	margin: 5px;
+	background-color: #fcfdfd;
+    box-shadow: 0px 20px 35px -26px #080c21;
+	text-align: center;
+}
+
+.date {
+	background-color: var(--background-color);
+	color: white;
+	margin-bottom: 3px;
+	text-align: center;
+}
+
+#todaysForecast p {
+	margin-top: 2px;
+	margin-bottom: 2px;
+	display: block;
+	padding-bottom: 5px;
+}
+
+#todaysForecast img {
+	width: 50%;
+	height: auto;
+	margin-top: 2vw;
+} 
+
+#scroll-tip {
+	background-color: var(--background-color);
+	color: white;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.dayForecast {
+	grid-area: moreWeather;
+	margin-bottom: 5px;
+ 	word-wrap: break-word;
+  	border: thin;
+	border-color: #dbdbdb;
+	border-radius: 5px;
+	background-color: #fcfdfd;
+	text-align: center;
+}
+
+#converter {
+	grid-area: moreWeather;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: .5px;
+}
+
+#converter img {
+	width: 20%;
+}
+
+#converter > form > input {
+	margin-right: 15px;
+	margin-left: 15px;
+}
+#converter > form > input[type="submit"]{
+	border: solid 1px;
+	border-radius: 3px;
+	text-align: center;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+#converter > form > input[type="submit"]:hover {
+	background-color: #ccd5d1;
+}
+
+
+#moreInfo {
+	grid-area: dropdown;
+}
+
+.collapsible {
+  background-color: var(--background-color);
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+ .collapsible:hover {
+  background-color:#194431;
+}
+
+.content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+	background-color: #e5eae8;
+}
+
+.content p {
+	font-size: 16px;
+}
+
+.weatherAdvisory p {
+	color: red;
+	font-size: 12px;
+}
+
+    /* HEADER */
+header {
+    margin-bottom: var(--margin-size);
+    height: var(--header-height);
+    background-color: var(--background-color);
+
+    display: flex;
+    align-content: flex-end;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+header h1 {
+    display: inline-block;
+    margin-left: var(--margin-size);
+
+    font-size: var(--header-font-size);
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+header img {
+    margin-left: var(--margin-size);
+    max-width: 20%;
+    justify-self: flex-start;
+}
+  
+    /* NAV BAR */
+nav {
+    margin-bottom: var(--margin-size);
+    height: var(--sub-heading-height);
+
+    background-color: var(--background-color);
+}
+
+ul {
+    padding-top: var(--bottom-align-text-padding);
+    display: flex;
+    height: 100%;
+
+    list-style: none;
+}
+
+li {
+    margin-left: var(--nav-margin-size);
+    display: inline-block;
+    height: 100%;
+
+    font-size: var(--nav-font-size);
+    align-self: flex-end;
+}
+
+a {
+    text-decoration: none;
+}
+
+li a{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+} 
+
+    /* FOOTER */
+
+footer {
+    padding-top: var(--bottom-align-text-padding);
+    height: 1.5vw;
+    width: 100%;
+
+    position: relative;
+    bottom: 0;
+
+    background-color: var(--background-color);
+    text-align: right;
+}    
+
+footer div {
+    margin-left: var(--margin-size);
+    display: inline;
+    
+    color: white;
+    font-size: var(--margin-size);
+    text-transform: uppercase;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    /* POLAROIDS */
+ div.polaroid {
+    height: fit-content;
+}    
+
+div.description{
+    grid-area: description;
+    width: 50%;
+}
+    /* FAVORITE PARKS / SURVEY RESULT */
+
+div.parkTile {
+    padding: var(--margin-size) 10vw;
+    display: grid;
+    grid-template-areas: 
+    "pic text"
+    ;
+	gap: var(--margin-size);
+} 
+
+div.parkTile  div{
+    white-space: normal;
+    grid-area: text;
+    display: flex;
+    flex-wrap: wrap;
+	align-items: center;
+}
+
+.parkTile div h2{
+	font-size: var(--subheading-font-size);
+}
+
+.park-image img {
+    max-height: fit-content;
+    grid-area: pic;
+}
+
+    /* SURVEY */
+form { 
+    width: fit-content;
+    max-height: fit-content;
+    margin-left: var(--margin-size);
+}
+
+#survey {
+    max-height: 100%;
+}
+
+#survey-details * {
+	font-family: 'Josefin Sans', sans-serif;
+    text-align: left;
+    grid-area: survey;
+    margin-bottom: var(--margin-size);
+}
+
+#survey h3 {
+    text-transform: uppercase;
+    padding-top: var(--padding-size);
+}
+
+#survey input[type="text"], #survey select {
+    height: var(--form-input-height);
+    font-size: var(--form-input-font-size);
+    margin-bottom: 2 * var(--margin-size);
+    text-align: center;
+}
+
+input[type="radio"]+label {
+    font-size: var(--body-text-font-size);
+	padding-left: var(--padding-size);
+    padding-right: 3 * var(--padding-size);
+}
+
+#survey-details>#survey>#submit {
+	border: solid 1px;
+	font-size: var(--body-text-font-size);
+	width: 200px;
+    padding-top: 5px;
+    text-align: center;
+}
+
+#surveyContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "survey slideshow";
+}
+
+/* Survey Slideshow */
+
+.slideshow-container {
+	max-width: 1000px;
+	position: relative;
+	margin: auto;
+	grid-area: slideshow;
+}
+
+.caption {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+  
+@-webkit-keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
+  
+@keyframes fade {
+	from {opacity: .4}
+	to {opacity: 1}
+}
